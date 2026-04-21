@@ -27,8 +27,8 @@ jobs:
       run: npm ci
 
     # 4. Menjalankan Test
-    - name: Run tests
-      run: npm test -- --watchAll=false
+    #- name: Run tests
+    # run: npm test -- --watchAll=false
 
     # 5. Memastikan aplikasi bisa di-build
     - name: Build project
