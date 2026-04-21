@@ -1,0 +1,35 @@
+name: React CI
+
+# Kapan aksi CI dijalankan? Saat ada push ke branch main
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # Meminta server Ubuntu versi terbaru
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Mengambil kode dari repository
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Menyiapkan Node.js versi 22
+    - name: Setup Node.js 22
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm' # Otomatis mengatur cache seperti Travis
+
+    # 3. Menginstall dependencies (npm ci lebih cepat & bersih dari npm install untuk server)
+    - name: Install dependencies
+      run: npm ci
+
+    # 4. Menjalankan Test
+    - name: Run tests
+      run: npm test -- --watchAll=false
+
+    # 5. Memastikan aplikasi bisa di-build
+    - name: Build project
+      run: npm run build
