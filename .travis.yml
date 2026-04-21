@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "22"
+
+# Meminta Travis menyiapkan server Ubuntu 22.04 untuk Node 22
+dist: jammy
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm test -- --watchAll=false
+  - npm run build
