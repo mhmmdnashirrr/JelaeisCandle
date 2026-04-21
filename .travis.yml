@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "22"
+
+dist: jammy
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  # Langsung ke proses build karena belum ada unit test
+  - npm run build
