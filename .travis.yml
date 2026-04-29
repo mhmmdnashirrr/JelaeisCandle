@@ -9,5 +9,9 @@ cache:
     - node_modules
 
 script:
-  # Langsung ke proses build karena belum ada unit test
+  # Fungsi Cek Kerapian Kode 
+  - npm run lint
+  # Fungsi Cek Logika Kode
+  - npm run test
+  # npm run build akan dijalankan ketika QC Lint & Test 100%
   - npm run build
